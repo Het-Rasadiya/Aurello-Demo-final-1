@@ -1,0 +1,321 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "line_dg7t8p": {
+      "type": "line",
+      "disabled": true,
+      "name": "Divider",
+      "settings": {
+        "animation": "",
+        "paddingsection": "0px 0px 0px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "bgsection": "#ffffff",
+        "setwidth": "full",
+        "bgborder": "#7f0019",
+        "wborder": "1px"
+      }
+    },
+    "custom_circular_categories_LXNrmB": {
+      "type": "custom-circular-categories",
+      "blocks": {
+        "category_GXbUcq": {
+          "type": "category",
+          "settings": {
+            "title": "Premium Plastic Wardrobe",
+            "collection": "furniture",
+            "link": ""
+          }
+        },
+        "category_Jg8zBj": {
+          "type": "category",
+          "settings": {
+            "title": "Cabinet Wardrobe",
+            "collection": "furniture",
+            "link": ""
+          }
+        },
+        "category_z948Ng": {
+          "type": "category",
+          "settings": {
+            "title": "Doors Wardrobe",
+            "collection": "furniture",
+            "link": ""
+          }
+        },
+        "category_GCahRm": {
+          "type": "category",
+          "settings": {
+            "title": "Shoes Rack",
+            "collection": "furniture",
+            "link": ""
+          }
+        },
+        "category_TaLxGa": {
+          "type": "category",
+          "settings": {
+            "title": "Kids Wardrobe with Stora",
+            "collection": "furniture",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_GXbUcq",
+        "category_Jg8zBj",
+        "category_z948Ng",
+        "category_GCahRm",
+        "category_TaLxGa"
+      ],
+      "name": "Circular Categories",
+      "settings": {
+        "setwidth": "container",
+        "mobile_layout": "scroll",
+        "circle_size_desktop": 100,
+        "circle_size_mobile": 90,
+        "gap_desktop": 25,
+        "gap_mobile": 20,
+        "border_thickness": 2,
+        "circle_padding": 4,
+        "border_color": "#faf7eb",
+        "border_hover_color": "#7f0019",
+        "font_size_desktop": 13,
+        "font_size_mobile": 12,
+        "font_weight": "400",
+        "text_color": "#333333",
+        "text_hover_color": "#800020",
+        "animation": "fade",
+        "bgsection": "rgba(0,0,0,0)",
+        "paddingsection": "40px 0px 40px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "paddingmobile": "20px 0px 20px 0px",
+        "marginmobile": "0px 0px 0px 0px"
+      }
+    },
+    "custom_hero_banner_nDEWhk": {
+      "type": "custom-hero-banner",
+      "blocks": {
+        "slide_cL9qn9": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/ChatGPT_Image_Aug_18_2026_06_34_19_PM.png",
+            "image_mobile": "shopify://shop_images/ChatGPT_Image_Aug_18_2026_06_35_41_PM.png",
+            "image_position": "center center",
+            "slide_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_cL9qn9"
+      ],
+      "name": "Custom Hero Banner",
+      "settings": {
+        "setwidthout": "full",
+        "desktop_height": "650px",
+        "mobile_height": "450px",
+        "animation": "",
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "effect": "slide",
+        "show_arrows": false,
+        "arrow_color": "#222222",
+        "arrow_bg_color": "#ffffffbf",
+        "arrow_bg_color_hover": "#fffffff2",
+        "show_dots": false,
+        "dot_color": "#ffffff",
+        "dot_color_active": "#7f0019",
+        "bgsection": "rgba(0,0,0,0)",
+        "paddingsection": "0px 0px 0px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "paddingmobile": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px"
+      }
+    },
+    "product_list_9qHA7r": {
+      "type": "product-list",
+      "name": "Product list (carousel)",
+      "settings": {
+        "animation": "",
+        "setwidth": "container",
+        "bgsection": "#ffffff",
+        "countdown_header": "",
+        "title_top": "",
+        "title": "Best Seller",
+        "des": "",
+        "button_bottom": "",
+        "link_button_bottom": "",
+        "align-heading": "center",
+        "collection": "furniture",
+        "show_variants": true,
+        "enable_quick_add": true,
+        "variant_width": 46,
+        "variant_height": 50,
+        "variant_width_mobile": 26,
+        "variant_height_mobile": 30,
+        "variant_shape": "square",
+        "image_ratio": "auto",
+        "quick_add_bg": "#7f0019",
+        "quick_add_color": "#faf7eb",
+        "arrows": false,
+        "draggable": false,
+        "dots": false,
+        "infinite": false,
+        "border_content": false,
+        "rows": "2",
+        "style_section": "style_1",
+        "limit": 8,
+        "show": 4,
+        "paddingsection": "40px 0px 0px 0px",
+        "paddingmobile": "40px 0px 40px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px"
+      }
+    },
+    "featured_collections_5_CA4zFG": {
+      "type": "featured-collections-5",
+      "blocks": {
+        "collection_67JVYF": {
+          "type": "collection",
+          "settings": {
+            "collection": "furniture",
+            "image": "shopify://shop_images/Rabbit_01_blank-background_65fa83ed-f5d0-459a-ad74-82a18d465bd3.png",
+            "color": "#ffffff",
+            "enable_gradient": false,
+            "bg_overlay": "#222222",
+            "opacity_overlay": 0.2
+          }
+        },
+        "collection_DiNYHx": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "bath-time",
+            "image": "shopify://shop_images/bathtime.jpg",
+            "color": "#ffffff",
+            "enable_gradient": false,
+            "bg_overlay": "#222222",
+            "opacity_overlay": 0.2
+          }
+        },
+        "collection_eNj6zb": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "mother-care",
+            "image": "shopify://shop_images/mothercare_6ebd9343-ee62-4fac-ad2a-c568b2511f33.jpg",
+            "color": "#ffffff",
+            "enable_gradient": false,
+            "bg_overlay": "#222222",
+            "opacity_overlay": 0.2
+          }
+        },
+        "collection_EGMNbe": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "travel-bags",
+            "image": "shopify://shop_images/Untitled_design_6.png",
+            "color": "#ffffff",
+            "enable_gradient": false,
+            "bg_overlay": "#222222",
+            "opacity_overlay": 0.2
+          }
+        }
+      },
+      "block_order": [
+        "collection_67JVYF",
+        "collection_DiNYHx",
+        "collection_eNj6zb",
+        "collection_EGMNbe"
+      ],
+      "name": "Collection grid",
+      "settings": {
+        "animation": "",
+        "setwidth": "container",
+        "bgsection": "#ffffff",
+        "title_top": "",
+        "title": "Collection",
+        "des": "",
+        "align-heading": "center",
+        "layout": "grid",
+        "col": "col-lg-3",
+        "enable_padding": true,
+        "size_image_col": "portrait",
+        "size_title": "h4",
+        "paddingsection": "40px 0px 40px 0px",
+        "paddingmobile": "40px 0px 40px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "marginmobile": "0px 0px 0px 0px"
+      }
+    },
+    "custom_newsletter_AtaA7L": {
+      "type": "custom-newsletter",
+      "name": "Custom Newsletter",
+      "settings": {
+        "setwidth": "container",
+        "form_width": 650,
+        "gap_desktop": 15,
+        "gap_mobile": 10,
+        "sub_title": "STAY IN THE LOOP",
+        "title": "GET 10% OFF YOUR FIRST ORDER",
+        "description": "New arrivals, restocks and the occasional discount code – nothing else.",
+        "placeholder_text": "E-mail",
+        "button_text": "SUBSCRIBE",
+        "sub_title_size": 13,
+        "title_size": 26,
+        "title_size_mobile": 20,
+        "desc_size": 15,
+        "desc_size_mobile": 13,
+        "bg_color": "#ffffff",
+        "sub_title_color": "#7f0019",
+        "title_color": "#7f0019",
+        "desc_color": "#7f0019",
+        "input_bg_color": "#ffffff",
+        "input_border_color": "#7f0019",
+        "input_border_focus_color": "#7f0019",
+        "input_text_color": "#333333",
+        "input_border_thickness": 1,
+        "input_radius": 0,
+        "btn_bg_color": "#800020",
+        "btn_text_color": "#ffffff",
+        "btn_hover_bg_color": "#600018",
+        "btn_hover_text_color": "#ffffff",
+        "btn_radius": 0,
+        "animation": "",
+        "paddingsection": "80px 0px 80px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "paddingmobile": "60px 0px 60px 0px",
+        "marginmobile": "0px 0px 0px 0px"
+      }
+    },
+    "line_GbUw8B": {
+      "type": "line",
+      "name": "Divider",
+      "settings": {
+        "animation": "",
+        "paddingsection": "0px 0px 0px 0px",
+        "marginsection": "0px 0px 0px 0px",
+        "bgsection": "#ffffff",
+        "setwidth": "full",
+        "bgborder": "#7f0019",
+        "wborder": "1px"
+      }
+    }
+  },
+  "order": [
+    "line_dg7t8p",
+    "custom_circular_categories_LXNrmB",
+    "custom_hero_banner_nDEWhk",
+    "product_list_9qHA7r",
+    "featured_collections_5_CA4zFG",
+    "custom_newsletter_AtaA7L",
+    "line_GbUw8B"
+  ]
+}

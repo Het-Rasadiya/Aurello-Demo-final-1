@@ -1,0 +1,79 @@
+<!-- productOption.liquid -->
+
+{%- if product_selector == 'radio' -%}
+  {%- liquid
+    assign isColor = false
+    assign optionName = option.name | handleize
+    assign option_index = loop
+  -%}
+{%- if optionName contains 'colo' -%}
+{%- assign isColor = true -%}
+{%- endif -%}
+<fieldset class="single-option-radio {% if isColor %} single-color {{ size_color }} {% if color_circle %}roud-color{% endif %} {% endif %} "
+          name="{{ option.name | handleize }}"
+          id="ProductSelect-option-{{ firstloop }}">
+  
+  {%- for value in option.values -%}
+    {%- liquid
+      assign variant_label_state = true 
+      if product.options.size == 1 
+        unless product.variants[firstloop].available 
+        assign variant_label_state = false 
+        endunless 
+      endif 
+      for variant in product.variants
+        assign vOption = 'option' | append: option_index 
+        if value == variant[vOption] 
+        assign currenVariant = variant 
+        break 
+        endif 
+      endfor 
+      assign hasImage = false 
+      if isColor and currenVariant.image 
+        assign hasImage = true 
+      endif 
+      assign isVariantImageOption = false
+      if optionName contains 'style' or optionName contains 'variant' or optionName contains 'pattern' or optionName contains 'material' or optionName contains 'design' or optionName contains 'type' or optionName contains 'flavor' or optionName contains 'model'
+        assign isVariantImageOption = true
+      endif
+      assign isVariantImage = false
+      if currenVariant.image and isColor == false and isVariantImageOption
+        assign isVariantImage = true
+      endif
+    -%}
+
+  <input type="radio"
+        {% if option.selected_value == value -%} checked="checked"{%- endif %}
+        {% unless variant_label_state -%} disabled="disabled"{%- endunless %}
+         value="{{ value | escape }}"
+         data-index="option{{ option_index }}"
+         name="{{ option.name | handleize }}"
+         class="single-option-selector-{{ section.id }} single-option-selector__radio{% unless variant_label_state %} disabled{% endunless %}"
+         id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
+    <label {% if isColor and currenVariant.image %} title="{{ value | escape }}" 
+    {%- if sw_color_product -%} 
+    class="st-color-{{ value | escape | handle }}"
+    style="background-color:{{ value | escape | handle }};"
+    {% else %} 
+    style="background-image:url({{ currenVariant.image.src | image_url: width: 100 }})" 
+    {% endif %}
+    {%- elsif isVariantImage -%}
+    title="{{ value | escape }}"
+    class="variant-image-swatch"
+    style="background-image:url({{ currenVariant.image.src | image_url: width: 120 }});"
+    {% endif %}
+          for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}"{% unless variant_label_state %} class="disabled"{% endunless %}>
+      {%- unless isColor and currenVariant.image or isVariantImage -%}{{ value | escape }}{%- endunless -%}
+    </label>
+  {%- endfor -%}
+</fieldset>
+{%- else -%}
+<select class="single-option-selector single-option-selector-{{ section.id }} product-form__input"
+        id="SingleOptionSelector-{{ firstloop }}"
+        data-name="{{ option.name }}"
+        data-index="option{{ loop }}">
+  {%- for value in option.values -%}
+  <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+  {%- endfor -%}
+</select>
+{%- endif -%}
