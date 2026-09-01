@@ -8,57 +8,49 @@
   {%- liquid
     assign optionHandleName = option | handleize
     assign isColor = false
-    if option == "Color" or option == "Colour"
+    if optionHandleName contains 'colo' or optionHandleName contains 'colour'
       assign isColor = true
     endif
     assign isVariantImageOption = false
-    if optionHandleName contains 'variant' or optionHandleName contains 'style' or optionHandleName contains 'pattern' or optionHandleName contains 'material' or optionHandleName contains 'design' or optionHandleName contains 'type' or optionHandleName contains 'flavor' or optionHandleName contains 'model'
+    if optionHandleName contains 'variant' or optionHandleName contains 'style' or optionHandleName contains 'pattern' or optionHandleName contains 'material' or optionHandleName contains 'design' or optionHandleName contains 'type' or optionHandleName contains 'flavor' or optionHandleName contains 'model' or optionHandleName contains 'door' or optionHandleName contains 'finish' or optionHandleName contains 'option' or optionHandleName contains 'size'
       assign isVariantImageOption = true
     endif
   -%}
-  {%- if isColor or isVariantImageOption -%}
+  {%- if isColor or isVariantImageOption or product.has_only_default_variant == false -%}
   {%- liquid 
     assign index0 = forloop.index0
   -%}
   {%- for variant in product.variants -%}
   {%- liquid 
     assign color = variant.options[index0]
+    assign variantImg = variant.image | default: variant.featured_image | default: product.featured_image
   -%}
     
     {%- if counter < 4 -%}
-    {%- unless arrayVariants contains variant.image -%}
-    {%- assign arrayVariants = arrayVariants | append: variant.image -%}
-        {%- if variant.image != blank -%}
+    {%- unless arrayVariants contains variantImg -%}
+    {%- assign arrayVariants = arrayVariants | append: variantImg -%}
+        {%- if variantImg != blank -%}
           <li  
           class="js-swatch-card-item {% if variant == product.selected_or_first_available_variant %} active {% endif %}" 
           data-url="{{ variant.url | within: collection }}" 
           data-id="{{ variant.id }}" 
-          data-image="{{ variant.image | image_url: width: 720 }}" 
+          data-image="{{ variantImg | image_url: width: 720 }}" 
           data-price="{{ variant.price }}"
           data-compare-price="{{ variant.compare_at_price }}">
             {%- if isColor and settings.swatch_color -%}
             <span
-              {% comment %}
-              {% if variant.metafields.color.swatch %}
-                style= " background-color: {{ variant.metafields.color.swatch }};"
-              {% elsif variant.metafields.image.swatch %}
-                style=" background-size: cover; background-image: url('{{ variant.metafields.image.swatch | image_url: width: 64 }}');"
-              {% else %}
-                style="background-color:{{ color | handle }};"
-              {% endif %}
-            {% endcomment %}
             class="st-color-{{ color | escape | downcase }}"
             style="background-color:{{ color | escape | downcase }};" 
               > </span>
             {%- else -%}
               <img data-sizes="auto" 
-                src="{{ variant.image | image_url: width: 100, height: 100 }}" 
+                src="{{ variantImg | image_url: width: 100, height: 100 }}" 
                 class="lazyload" 
-                data-src="{{ variant.image | image_url: width: 100, height: 100 }}" 
-                alt="{{ variant.image.alt }}" 
+                data-src="{{ variantImg | image_url: width: 100, height: 100 }}" 
+                alt="{{ variantImg.alt | escape }}" 
                 loading="lazy"
-                width="{{ variant.image.width }}"
-                height="{{ variant.image.height }}"
+                width="{{ variantImg.width }}"
+                height="{{ variantImg.height }}"
               />
             {%- endif -%}
           </li>

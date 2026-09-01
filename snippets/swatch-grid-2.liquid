@@ -22,24 +22,30 @@
       {%- for value in option.values -%}
        {%- liquid
           assign option_index0 = option_index | minus: 1
+          assign val_str = value.name | default: value
+          assign currenVariant = nil
           for variant in product.variants
-            if value == variant.options[option_index0] 
+            assign var_opt = variant.options[option_index0]
+            if val_str == var_opt or value == var_opt
               assign currenVariant = variant 
               break 
             endif 
           endfor 
+          if currenVariant == nil
+            assign currenVariant = product.selected_or_first_available_variant
+          endif
+          assign varImg = currenVariant.featured_media.preview_image | default: currenVariant.image | default: currenVariant.featured_image | default: product.featured_image
        -%}
-      {% comment %}{%- assign currenVariant = product.variants[forloop.index0] -%} {% endcomment %}
       {%- assign hasImage = false -%}
-      {%- if isColor and currenVariant.image -%}
+      {%- if isColor and varImg -%}
         {%- assign hasImage = true -%}
       {%- endif -%}
       {%- assign isVariantImageOption = false -%}
-      {%- if optionName contains 'style' or optionName contains 'variant' or optionName contains 'pattern' or optionName contains 'material' or optionName contains 'design' or optionName contains 'type' or optionName contains 'flavor' or optionName contains 'model' -%}
+      {%- if optionName contains 'style' or optionName contains 'variant' or optionName contains 'pattern' or optionName contains 'material' or optionName contains 'design' or optionName contains 'type' or optionName contains 'flavor' or optionName contains 'model' or optionName contains 'door' or optionName contains 'finish' or optionName contains 'option' or optionName contains 'size' -%}
         {%- assign isVariantImageOption = true -%}
       {%- endif -%}
       {%- assign isVariantImage = false -%}
-      {%- if currenVariant.image and isColor == false and isVariantImageOption -%}
+      {%- if varImg and isColor == false and isVariantImageOption -%}
         {%- assign isVariantImage = true -%}
       {%- endif -%}
       <input type="radio"
@@ -50,20 +56,20 @@
              class="single-option-selector-{{ formId }} single-option-selector__radio"
              id="ProductSelect-option-{{ formId }}-{{ option.name | handleize }}-{{ value | handleize }}">
       <label 
-             data-image="{{ currenVariant.image | image_url: width: 720 }}"
+             data-image="{% if varImg %}{{ varImg | image_url: width: 720 }}{% endif %}"
              data-id="{{ currenVariant.id }}"
              data-price="{{ currenVariant.price }}"
              data-compare-price="{{ currenVariant.compare_at_price }}"
              data-url="{{ currenVariant.url | within: collection }}"
              {% if isColor %}
                data-tooltip="true" title="{{ value | escape }}" 
-               {% if currenVariant.image %}
-                 style="background-image:url({{ currenVariant.image.src | image_url: width: 100 }});"
+               {% if varImg %}
+                 style="background-image:url({{ varImg.src | image_url: width: 100 }});"
                {% else %}
                  style="background-color:{{ value | escape | downcase }};"
                {% endif %}
              {% elsif isVariantImage %}
-               data-tooltip="true" title="{{ value | escape }}" class="variant-image-swatch-grid" style="background-image:url({{ currenVariant.image.src | image_url: width: 100 }})"
+               data-tooltip="true" title="{{ value | escape }}" class="variant-image-swatch-grid" style="background-image:url({{ varImg.src | image_url: width: 100 }})"
              {% endif %}
              for="ProductSelect-option-{{ formId }}-{{ option.name | handleize }}-{{ value | handleize }}">
         {%- unless isColor or isVariantImage %}{{ value | escape }}{%- endunless -%}

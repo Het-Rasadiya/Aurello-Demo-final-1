@@ -5111,20 +5111,16 @@ theme.collectionView = (function () {
   return {
     triggerView: triggerCollectionView
   }
-})()
-
-// Swath variant in card item
+})()// Swath variant in card item
 theme.swatchCard = (function () {
   function updateCard(element) {
     var $this = $(element);
     var gridItem = $this.closest('.js-product-card');
 
-    // For swatch-grid-1, toggle active class on li elements
     if ($this.hasClass('js-swatch-card-item')) {
       $this.siblings().removeClass("active");
       $this.addClass("active");
     } else {
-      // For swatch-grid-2, toggle active class on labels
       $this.siblings('label').removeClass("active");
       $this.addClass("active");
     }
@@ -5138,13 +5134,20 @@ theme.swatchCard = (function () {
     // Update image
     var $mainImage = gridItem.find('.product-card__image').find('.first-image');
     if ($mainImage.length === 0) {
-      $mainImage = gridItem.find('.product-card__image').find('img');
+      $mainImage = gridItem.find('.product-card__image').find('img').first();
     }
-    if (newImage) {
-      $mainImage.removeClass('lazyload lazyloading lazyloaded')
-        .removeAttr('data-src data-srcset data-sizes data-widths')
-        .attr('srcset', newImage)
-        .attr('src', newImage);
+    if (newImage && newImage !== '') {
+      gridItem.addClass('has-active-variant');
+      $mainImage.addClass('lazyloaded')
+        .removeAttr('data-srcset data-sizes data-widths srcset')
+        .attr('data-src', newImage)
+        .attr('src', newImage)
+        .css({ 'opacity': '1', 'visibility': 'visible', 'transform': 'scale(1)' });
+
+      var $secondImage = gridItem.find('.second-image');
+      if ($secondImage.length) {
+        $secondImage.css('opacity', '0');
+      }
     }
 
     // Update Add to Cart button variant ID
@@ -5227,7 +5230,7 @@ theme.swatchCard2 = (function () {
       var variant = evt.variant;
       var $mainImage = $wrapObject.find('.product-card__image').find('.first-image');
       if ($mainImage.length === 0) {
-        $mainImage = $wrapObject.find('.product-card__image').find('img');
+        $mainImage = $wrapObject.find('.product-card__image').find('img').first();
       }
       if (variant !== undefined) {
         var imageSrc = null;
@@ -5235,12 +5238,21 @@ theme.swatchCard2 = (function () {
           imageSrc = variant.featured_image.src;
         } else if (variant.image) {
           imageSrc = typeof variant.image === 'string' ? variant.image : (variant.image.src || null);
+        } else if (variant.featured_media && variant.featured_media.preview_image) {
+          imageSrc = variant.featured_media.preview_image.src;
         }
-        if (imageSrc) {
-          $mainImage.removeClass('lazyload lazyloading lazyloaded')
-            .removeAttr('data-src data-srcset data-sizes data-widths')
-            .attr('srcset', imageSrc)
-            .attr('src', imageSrc);
+        if (imageSrc && imageSrc !== '') {
+          $wrapObject.addClass('has-active-variant');
+          $mainImage.addClass('lazyloaded')
+            .removeAttr('data-srcset data-sizes data-widths srcset')
+            .attr('data-src', imageSrc)
+            .attr('src', imageSrc)
+            .css({ 'opacity': '1', 'visibility': 'visible', 'transform': 'scale(1)' });
+
+          var $secondImage = $wrapObject.find('.second-image');
+          if ($secondImage.length) {
+            $secondImage.css('opacity', '0');
+          }
         }
       }
     }
@@ -5284,6 +5296,7 @@ theme.swatchCard2 = (function () {
     initForm();
   });
   return {
+    initForm: initForm,
     load: initForm
   }
 })()

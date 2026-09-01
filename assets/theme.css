@@ -5553,6 +5553,13 @@ p a:not(.button):focus,
   transform: scale3d(1.05, 1.05, 1.05) translateZ(0);
 }
 
+.product-card.has-active-variant .second-image,
+.product-card:hover.has-active-variant .second-image {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 .product-card:hover .first-image {
   transform: scale3d(1.05, 1.05, 1.05) translateZ(0);
 }
