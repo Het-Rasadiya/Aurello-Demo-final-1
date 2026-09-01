@@ -5173,17 +5173,13 @@ theme.swatchCard = (function () {
     }
   }
 
-  $(document).on('click mouseenter', '.js-swatch-card-item, .single-option-radio label', function () {
+  $(document).on('click', '.js-swatch-card-item, .single-option-radio label', function () {
     updateCard(this);
   });
 
-  // Revert back on mouseleave from the swatch list
+  // Hide tooltips on mouseleave from the swatch list
   $(document).on('mouseleave', '.product-card__swatch, .single-option-radio', function () {
     $(this).find('[data-toggle="tooltip"], [data-tooltip="true"]').tooltip('hide');
-    var $activeItem = $(this).find('.js-swatch-card-item.active, input:checked + label');
-    if ($activeItem.length) {
-      updateCard($activeItem[0]);
-    }
   });
 })()
 
