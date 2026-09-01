@@ -11,6 +11,46 @@
     }
   }
   .product-recommendations .product-card .product-countdown{display:none !important;}
+
+  {% if section.settings.variant_width != blank %}
+  .section-{{ section.id }}-padding .product-card .single-option-radio label[title] {
+    width: {{ section.settings.variant_width }}px !important;
+    height: {{ section.settings.variant_height }}px !important;
+  }
+  .section-{{ section.id }}-padding .product-card .single-option-radio label:not([title]) {
+    min-width: {{ section.settings.variant_width }}px !important;
+    height: {{ section.settings.variant_height }}px !important;
+  }
+  {% endif %}
+
+  {% if section.settings.variant_shape == 'circle' %}
+  .section-{{ section.id }}-padding .product-card .single-option-radio label {
+    border-radius: 50% !important;
+  }
+  .section-{{ section.id }}-padding .product-card .single-option-radio label[title] {
+    border-radius: 50% !important;
+  }
+  {% else %}
+  .section-{{ section.id }}-padding .product-card .single-option-radio label {
+    border-radius: 4px !important;
+  }
+  .section-{{ section.id }}-padding .product-card .single-option-radio label[title] {
+    border-radius: 4px !important;
+  }
+  {% endif %}
+
+  @media (max-width: 767px) {
+    {% if section.settings.variant_width_mobile != blank %}
+    .section-{{ section.id }}-padding .product-card .single-option-radio label[title] {
+      width: {{ section.settings.variant_width_mobile }}px !important;
+      height: {{ section.settings.variant_height_mobile }}px !important;
+    }
+    .section-{{ section.id }}-padding .product-card .single-option-radio label:not([title]) {
+      min-width: {{ section.settings.variant_width_mobile }}px !important;
+      height: {{ section.settings.variant_height_mobile }}px !important;
+    }
+    {% endif %}
+  }
 {%- endstyle -%}
 <div class="section-{{ section.id }}-padding" data-aos="{{ section.settings.animation }}" >
   <div class="{{ section.settings.setwidth }}">
@@ -20,7 +60,7 @@
         <ul class="list-unstyled row product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down" role="list">
           {% for recommendation in recommendations.products %}
             <li class="grid__item col-lg-{{ section.settings.columns_desktop }} col-{{ section.settings.columns_mobile }}" >
-              {%- render 'product-card', product: recommendation -%}
+              {%- render 'product-card', product: recommendation, show_variants: section.settings.show_variants, enable_quick_add: section.settings.enable_quick_add -%}
             </li>
           {% endfor %}
         </ul>
@@ -311,6 +351,78 @@
         {
           "value": "6",
           "label": "2 columns"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Variant Swatches Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_variants",
+      "label": "Show variants",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quick_add",
+      "label": "Enable quick add (+ button)",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "variant_width",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Variant Swatch Width",
+      "default": 46
+    },
+    {
+      "type": "range",
+      "id": "variant_height",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Variant Swatch Height",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "variant_width_mobile",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Variant Swatch Width Mobile",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "variant_height_mobile",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Variant Swatch Height Mobile",
+      "default": 30
+    },
+    {
+      "type": "select",
+      "id": "variant_shape",
+      "label": "Variant Swatch Shape",
+      "default": "square",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
         }
       ]
     },
