@@ -60,6 +60,12 @@
   else
     assign item = settings.productgrid
   endif
+  if enable_quick_add == nil
+    assign enable_quick_add = true
+  endif
+  if show_variants == nil
+    assign show_variants = true
+  endif
 -%}
 {%- case item -%}
   {%- when 'product-1' -%}
@@ -356,6 +362,7 @@
     -%}
     {%- if enable_quick_add -%}
     <span class="btn btn-theme product-card__quick-add-btn js-grid-cart {% unless product.available %} disabled {% endunless %}" 
+      style="background-color: #7F0019 !important; background: #7F0019 !important; color: #FAF7EB !important;"
       {% if product.available %}
         title="{{ 'products.product.add_to_cart' | t }}" 
       {% else %}
