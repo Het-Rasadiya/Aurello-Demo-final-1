@@ -14399,3 +14399,18 @@ blockquote::before {
   border-radius: var(--g-font-radius-btn) !important;
   overflow: hidden;
 }
+
+/* ========================================
+   Hide Shiprocket BUY NOW inside cart drawer
+   The cart drawer already has VIEW CART + Checkout
+   ======================================== */
+.mini-cart-content [id*="shiprocket"],
+.mini-cart-content [class*="shiprocket"],
+.mini-cart-content [id*="srkt"],
+.mini-cart-content [class*="srkt"],
+.mini-cart-content [id*="sr-checkout"],
+.mini-cart-content [class*="sr-checkout"],
+.mini-cart-content #srkt-buy-now-btn,
+.mini-cart-content .srkt-buy-now-btn {
+  display: none !important;
+}
