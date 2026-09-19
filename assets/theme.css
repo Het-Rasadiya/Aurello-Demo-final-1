@@ -14401,9 +14401,10 @@ blockquote::before {
 }
 
 /* ========================================
-   Hide Shiprocket BUY NOW inside cart drawer
-   The cart drawer already has VIEW CART + Checkout
+   Shiprocket BUY NOW inside cart drawer
+   (Previously hidden - now enabled so the button shows)
    ======================================== */
+/*
 .mini-cart-content [id*="shiprocket"],
 .mini-cart-content [class*="shiprocket"],
 .mini-cart-content [id*="srkt"],
@@ -14414,3 +14415,4 @@ blockquote::before {
 .mini-cart-content .srkt-buy-now-btn {
   display: none !important;
 }
+*/
