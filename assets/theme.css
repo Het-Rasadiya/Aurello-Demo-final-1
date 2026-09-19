@@ -14367,3 +14367,35 @@ blockquote::before {
   border: 2px solid var(--g-main, #000) !important;
   box-shadow: 0 0 0 2px #fff, 0 0 4px rgba(0,0,0,0.3) !important;
 }
+
+/* ========================================
+   Shiprocket Buy Now Button - Rounded Override
+   Match the Add to Cart button's pill/rounded shape
+   ======================================== */
+#srkt-buy-now-btn,
+.srkt-buy-now-btn,
+[id*="shiprocket"] button,
+[class*="shiprocket"] button,
+[id*="srkt"] button,
+[class*="srkt"] button,
+[id*="sr-checkout"] button,
+[class*="sr-checkout"] button,
+#srkt-buy-now-btn *,
+.srkt-buy-now-btn *,
+[id*="shiprocket"] button *,
+[class*="shiprocket"] button *,
+[id*="srkt"] button *,
+[class*="srkt"] button * {
+  border-radius: var(--g-font-radius-btn) !important;
+}
+
+/* Target the Shiprocket Buy Now wrapper/container */
+[id*="shiprocket"],
+[class*="shiprocket"],
+[id*="srkt"],
+[class*="srkt"],
+[id*="sr-checkout"],
+[class*="sr-checkout"] {
+  border-radius: var(--g-font-radius-btn) !important;
+  overflow: hidden;
+}

@@ -295,8 +295,12 @@
     </div>
 
     {% if section.settings.button_bottom != blank %}
-        <div class="product-list-button-bottom text-center pt-3">
-          <a href="{{ section.settings.link_button_button }}" class="link-base">{{ section.settings.button_bottom  }}</a>
+        {% assign view_more_link = section.settings.link_button_bottom %}
+        {% if view_more_link == blank and section.settings.collection != blank %}
+          {% assign view_more_link = collections[section.settings.collection].url %}
+        {% endif %}
+        <div class="product-list-button-bottom text-center" style="margin-top: 30px;">
+          <a href="{{ view_more_link }}" class="btn btn-theme" style="display: inline-block; padding: 12px 40px; letter-spacing: 1.5px; font-size: 13px; text-transform: uppercase;">{{ section.settings.button_bottom }}</a>
         </div>
     {%  endif %}
   </div>
