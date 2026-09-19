@@ -14399,3 +14399,87 @@ blockquote::before {
   border-radius: var(--g-font-radius-btn) !important;
   overflow: hidden;
 }
+
+/* ========================================
+   Shiprocket BUY NOW inside cart drawer
+   Match the View Cart button shape & size
+   ======================================== */
+.mini-cart-btns [id*="shiprocket"],
+.mini-cart-btns [class*="shiprocket"],
+.mini-cart-btns [id*="srkt"],
+.mini-cart-btns [class*="srkt"],
+.mini-cart-btns [id*="sr-checkout"],
+.mini-cart-btns [class*="sr-checkout"] {
+  flex: 1;
+  width: 50%;
+  margin-left: 0.5rem;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-cart-btns [id*="shiprocket"] button,
+.mini-cart-btns [class*="shiprocket"] button,
+.mini-cart-btns [id*="srkt"] button,
+.mini-cart-btns [class*="srkt"] button,
+.mini-cart-btns [id*="sr-checkout"] button,
+.mini-cart-btns [class*="sr-checkout"] button {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 44px;
+  border-radius: var(--g-font-radius-btn) !important;
+  font-size: 14px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  padding: 8px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Hide all inner content of Shiprocket button in cart drawer */
+.mini-cart-btns [id*="shiprocket"] button *,
+.mini-cart-btns [class*="shiprocket"] button *,
+.mini-cart-btns [id*="srkt"] button *,
+.mini-cart-btns [class*="srkt"] button *,
+.mini-cart-btns [id*="sr-checkout"] button *,
+.mini-cart-btns [class*="sr-checkout"] button * {
+  display: none !important;
+}
+
+/* Set button text to invisible, show BUY NOW via ::after */
+.mini-cart-btns [id*="shiprocket"] button,
+.mini-cart-btns [class*="shiprocket"] button,
+.mini-cart-btns [id*="srkt"] button,
+.mini-cart-btns [class*="srkt"] button,
+.mini-cart-btns [id*="sr-checkout"] button,
+.mini-cart-btns [class*="sr-checkout"] button {
+  font-size: 0 !important;
+  color: transparent !important;
+}
+
+.mini-cart-btns [id*="shiprocket"] button::after,
+.mini-cart-btns [class*="shiprocket"] button::after,
+.mini-cart-btns [id*="srkt"] button::after,
+.mini-cart-btns [class*="srkt"] button::after,
+.mini-cart-btns [id*="sr-checkout"] button::after,
+.mini-cart-btns [class*="sr-checkout"] button::after {
+  content: "BUY NOW" !important;
+  display: block !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+}
+
+/* Hide "Powered By Shiprocket" below the button */
+.mini-cart-btns [id*="shiprocket"] > *:not(button),
+.mini-cart-btns [class*="shiprocket"] > *:not(button),
+.mini-cart-btns [id*="srkt"] > *:not(button),
+.mini-cart-btns [class*="srkt"] > *:not(button),
+.mini-cart-btns [id*="sr-checkout"] > *:not(button),
+.mini-cart-btns [class*="sr-checkout"] > *:not(button) {
+  display: none !important;
+}
+
